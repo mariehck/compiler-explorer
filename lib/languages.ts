@@ -604,6 +604,17 @@ const definitions: Record<LanguageKey, LanguageDefinition> = {
         previewFilter: null,
         monacoDisassembly: null,
     },
+    pythran: {
+        name: 'Pythran',
+        monaco: 'python',
+        extensions: ['.py'],
+        alias: [],
+        logoUrl: 'python.svg',
+        logoUrlDark: null,
+        formatter: null,
+        previewFilter: null,
+        monacoDisassembly: null,
+    },
     racket: {
         name: 'Racket',
         monaco: 'scheme',

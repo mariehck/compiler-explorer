@@ -77,6 +77,7 @@ export type LanguageKey =
     | 'pascal'
     | 'pony'
     | 'python'
+    | 'pythran'
     | 'racket'
     | 'ruby'
     | 'rust'
