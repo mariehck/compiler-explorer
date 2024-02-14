@@ -613,7 +613,7 @@ const definitions: Record<LanguageKey, LanguageDefinition> = {
         logoUrlDark: null,
         formatter: null,
         previewFilter: null,
-        monacoDisassembly: null,
+        monacoDisassembly: 'cppp',
     },
     racket: {
         name: 'Racket',
