@@ -548,12 +548,6 @@ export class BaseCompiler implements ICompiler {
             this.compiler.objdumperArgs,
         );
 
-        // objdump outputs assembly. We do have other kind of objdumper (java,
-        // nvptx), but these are also displayed as assembly. Make this mode
-        // explicit, and also makes it easier for compiler that are not only
-        // emitting assembly.
-        result.languageId = 'asm';
-
         if (this.externalparser) {
             const objResult = await this.externalparser.objdumpAndParseAssembly(result.dirPath, args, filters);
             if (objResult.parsingTime !== undefined) {
