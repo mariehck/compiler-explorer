@@ -613,6 +613,8 @@ const definitions: Record<LanguageKey, LanguageDefinition> = {
         logoUrlDark: null,
         formatter: null,
         previewFilter: null,
+        // the mode is handled in pythran.ts to account for what's really
+        // displayed (C++ or assembly through objdump)
         monacoDisassembly: null,
     },
     racket: {

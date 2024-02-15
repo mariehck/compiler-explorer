@@ -21,7 +21,14 @@ export class PythranCompiler extends BaseCompiler {
         return options;
     }
 
-    override getCompilerResultLanguageId() {
-        return 'cppp';
+    override getCompilerResultLanguageId(filters?: ParseFiltersAndOutputOptions): string | undefined {
+        logger.error(`getCompilerRLId with ${filters}`);
+        if (typeof(filters) !== 'undefined' && filters.binary) {
+            logger.error(`============= Setting to ASM`);
+            return 'asm';
+        } else {
+            logger.error(`============= Setting to C++`);
+            return 'cppp';
+        }
     }
 }
