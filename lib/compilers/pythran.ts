@@ -1,3 +1,4 @@
+import path from 'path';
 import {BaseCompiler} from '../base-compiler.js';
 import type {PreliminaryCompilerInfo} from '../../types/compiler.interfaces.js';
 import type {ParseFiltersAndOutputOptions} from '../../types/features/filters.interfaces.js';
@@ -7,8 +8,21 @@ export class PythranCompiler extends BaseCompiler {
         return 'pythran';
     }
 
+    cpp_compiler_root: string;
+
     constructor(info: PreliminaryCompilerInfo, env) {
         super(info, env);
+        this.cpp_compiler_root = this.compilerProps<string>(`compiler.${this.compiler.id}.cpp_compiler_root`);
+    }
+
+    override getDefaultExecOptions() {
+        const execOptions = super.getDefaultExecOptions();
+        if (this.cpp_compiler_root) {
+            execOptions.env.PATH = path.join(this.cpp_compiler_root, 'bin');
+            execOptions.env.LD_LIBRARY_PATH = path.join(this.cpp_compiler_root, 'lib');
+        }
+
+        return execOptions;
     }
 
     override optionsForFilter(
@@ -22,13 +36,9 @@ export class PythranCompiler extends BaseCompiler {
     }
 
     override getCompilerResultLanguageId(filters?: ParseFiltersAndOutputOptions): string | undefined {
-        logger.error(`getCompilerRLId with ${filters}`);
-        if (typeof(filters) !== 'undefined' && filters.binary) {
-            logger.error(`============= Setting to ASM`);
+        if (typeof(filters) !== 'undefined' && filters.binary)
             return 'asm';
-        } else {
-            logger.error(`============= Setting to C++`);
+        else
             return 'cppp';
-        }
     }
 }
