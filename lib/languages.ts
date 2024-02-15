@@ -609,11 +609,11 @@ const definitions: Record<LanguageKey, LanguageDefinition> = {
         monaco: 'python',
         extensions: ['.py'],
         alias: [],
-        logoUrl: 'python.svg',
+        logoUrl: 'pythran.svg',
         logoUrlDark: null,
         formatter: null,
         previewFilter: null,
-        monacoDisassembly: 'cppp',
+        monacoDisassembly: null,
     },
     racket: {
         name: 'Racket',
