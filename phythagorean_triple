@@ -1,0 +1,12 @@
+bool is_pythagorean_triple (int a, int b, int c)
+{}
+
+main ()
+{
+int triple[3];
+cout << "Please enter triple to test if its a pythagorean triple:" <<endl;
+cin >>triple;
+
+for (int i; i<=3,i++) {
+cout<<triple[i];}
+}
